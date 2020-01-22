@@ -20,7 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         UNUserNotificationCenter.current().delegate = self
         UNUserNotificationCenter.current().requestAuthorization(options:
                                           [.alert,.sound,.badge]) { (granted, error) in
-                  
+                  print("通知許可")
               }
 //        center.requestAuthorization(options: [.alert, .badge, .sound]) {(granted, error) in
 //            if granted {
