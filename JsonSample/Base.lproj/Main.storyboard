@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Remind_Umbrella" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Remind Umbrella" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c9J-GA-pT0">
+                                <rect key="frame" x="110" y="173" width="155" height="20.5"/>
+                                <color key="backgroundColor" systemColor="opaqueSeparatorColor" red="0.77647058820000003" green="0.77647058820000003" blue="0.7843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="hour:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wpw-Hr-kbQ">
+                                <rect key="frame" x="90" y="305" width="40" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="min:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RxQ-Rq-LHU">
+                                <rect key="frame" x="97" y="401" width="33" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0q1-A2-uXc">
+                                <rect key="frame" x="157.5" y="227" width="60" height="30"/>
+                                <state key="normal" title=" Resister"/>
+                                <connections>
+                                    <action selector="resisterButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="n8T-hZ-WII"/>
+                                </connections>
+                            </button>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UN5-J2-yjh">
+                                <rect key="frame" x="27.5" y="277" width="320" height="75"/>
+                            </pickerView>
+                            <pickerView tag="1" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nqk-Vt-fNT">
+                                <rect key="frame" x="27.5" y="372" width="320" height="77"/>
+                            </pickerView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="nqk-Vt-fNT" firstAttribute="top" secondItem="wpw-Hr-kbQ" secondAttribute="bottom" constant="47" id="7k7-fj-9sD"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="nqk-Vt-fNT" secondAttribute="bottom" constant="218" id="7ti-He-zKF"/>
+                            <constraint firstItem="c9J-GA-pT0" firstAttribute="centerX" secondItem="0q1-A2-uXc" secondAttribute="centerX" id="9FW-Z6-991"/>
+                            <constraint firstItem="c9J-GA-pT0" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="173" id="9YL-79-pPE"/>
+                            <constraint firstItem="nqk-Vt-fNT" firstAttribute="top" secondItem="UN5-J2-yjh" secondAttribute="bottom" constant="20" id="HuM-Vl-3CF"/>
+                            <constraint firstItem="0q1-A2-uXc" firstAttribute="top" secondItem="c9J-GA-pT0" secondAttribute="bottom" constant="33.5" id="Ki2-0V-moe"/>
+                            <constraint firstItem="wpw-Hr-kbQ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="90" id="PaC-A3-Wy6"/>
+                            <constraint firstItem="UN5-J2-yjh" firstAttribute="centerY" secondItem="wpw-Hr-kbQ" secondAttribute="centerY" id="Xjt-Z5-Ca6"/>
+                            <constraint firstItem="UN5-J2-yjh" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="aZc-XN-Rex"/>
+                            <constraint firstItem="nqk-Vt-fNT" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="d9O-8a-skR"/>
+                            <constraint firstItem="c9J-GA-pT0" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="110" id="i5I-Ub-tbx"/>
+                            <constraint firstItem="0q1-A2-uXc" firstAttribute="centerX" secondItem="UN5-J2-yjh" secondAttribute="centerX" id="lDH-A7-fnj"/>
+                            <constraint firstItem="RxQ-Rq-LHU" firstAttribute="top" secondItem="UN5-J2-yjh" secondAttribute="bottom" constant="48" id="mbS-yb-A1F"/>
+                            <constraint firstItem="UN5-J2-yjh" firstAttribute="top" secondItem="0q1-A2-uXc" secondAttribute="bottom" constant="20" id="qxK-Ny-HIl"/>
+                            <constraint firstItem="wpw-Hr-kbQ" firstAttribute="trailing" secondItem="RxQ-Rq-LHU" secondAttribute="trailing" id="uMR-9a-zuo"/>
+                            <constraint firstItem="nqk-Vt-fNT" firstAttribute="centerY" secondItem="RxQ-Rq-LHU" secondAttribute="centerY" id="xIJ-i3-kWc"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                    <connections>
+                        <outlet property="hourPickerView" destination="UN5-J2-yjh" id="4pf-RD-mIY"/>
+                        <outlet property="label" destination="c9J-GA-pT0" id="rtG-18-pYl"/>
+                        <outlet property="minPickerView" destination="nqk-Vt-fNT" id="WKw-dx-U9N"/>
+                        <outlet property="resister" destination="0q1-A2-uXc" id="TtI-aF-G80"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="116" y="91.304347826086968"/>
+        </scene>
+    </scenes>
+</document>
