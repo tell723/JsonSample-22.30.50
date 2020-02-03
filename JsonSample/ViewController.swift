@@ -16,6 +16,7 @@ class ViewController: UIViewController, UNUserNotificationCenterDelegate, CLLoca
     
     @IBOutlet weak var label: UILabel!
     @IBOutlet weak var resister: UIButton!
+    @IBOutlet weak var locationLabel: UILabel!
     
     var locationManager: CLLocationManager!
     var latitude: CLLocationDegrees!
@@ -25,11 +26,11 @@ class ViewController: UIViewController, UNUserNotificationCenterDelegate, CLLoca
         willSet{
             switch newValue {
             case "":
-                message = "天気が所得されていません"
+                message = "天気情報が所得されていません"
             case "Rain":
                 message = "傘忘れんなよ！！"
             default:
-                message =  "傘はいらん"
+                message =  "傘はいりません"
             }
         }
     }
@@ -56,13 +57,14 @@ class ViewController: UIViewController, UNUserNotificationCenterDelegate, CLLoca
         minPickerView.dataSource = self
         
         self.resister.isEnabled = true
+        self.locationLabel.text = "Location:"
     }
     
     @IBAction func resisterButton(_ sender: Any) {
         
         let content = UNMutableNotificationContent()
-        content.title = self.location
-        content.body = self.message
+        content.title = self.message
+        content.body = self.location
         content.sound = UNNotificationSound.default
         
         var notificationTime = DateComponents()
@@ -82,6 +84,11 @@ class ViewController: UIViewController, UNUserNotificationCenterDelegate, CLLoca
         
         if let lat = self.latitude, let lon = self.longitude {
             print("lat: \(lat) lon: \(lon)")
+        }
+        if location == "" {
+            self.locationLabel.text = "Location: 位置情報が取得できません"
+        } else {
+            self.locationLabel.text = "Location: \(location)"
         }
         
         self.resister.isEnabled = false

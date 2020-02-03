@@ -47,20 +47,38 @@
                             <pickerView tag="1" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nqk-Vt-fNT">
                                 <rect key="frame" x="27.5" y="372" width="320" height="77"/>
                             </pickerView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Location：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OOe-Nr-4Ov">
+                                <rect key="frame" x="60" y="450" width="255" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="天気情報は位置情報は設定した時点で登録されます" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FgS-Oa-CId">
+                                <rect key="frame" x="23" y="499" width="329" height="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="OOe-Nr-4Ov" secondAttribute="trailing" constant="60" id="0B4-zl-Z8R"/>
+                            <constraint firstItem="OOe-Nr-4Ov" firstAttribute="top" secondItem="nqk-Vt-fNT" secondAttribute="bottom" constant="1" id="0yP-mf-iLJ"/>
                             <constraint firstItem="nqk-Vt-fNT" firstAttribute="top" secondItem="wpw-Hr-kbQ" secondAttribute="bottom" constant="47" id="7k7-fj-9sD"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="nqk-Vt-fNT" secondAttribute="bottom" constant="218" id="7ti-He-zKF"/>
                             <constraint firstItem="c9J-GA-pT0" firstAttribute="centerX" secondItem="0q1-A2-uXc" secondAttribute="centerX" id="9FW-Z6-991"/>
                             <constraint firstItem="c9J-GA-pT0" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="173" id="9YL-79-pPE"/>
                             <constraint firstItem="nqk-Vt-fNT" firstAttribute="top" secondItem="UN5-J2-yjh" secondAttribute="bottom" constant="20" id="HuM-Vl-3CF"/>
                             <constraint firstItem="0q1-A2-uXc" firstAttribute="top" secondItem="c9J-GA-pT0" secondAttribute="bottom" constant="33.5" id="Ki2-0V-moe"/>
+                            <constraint firstItem="OOe-Nr-4Ov" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="60" id="Lkg-B2-Jxm"/>
                             <constraint firstItem="wpw-Hr-kbQ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="90" id="PaC-A3-Wy6"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="OOe-Nr-4Ov" secondAttribute="trailing" constant="60" id="UEe-JX-kQB"/>
                             <constraint firstItem="UN5-J2-yjh" firstAttribute="centerY" secondItem="wpw-Hr-kbQ" secondAttribute="centerY" id="Xjt-Z5-Ca6"/>
                             <constraint firstItem="UN5-J2-yjh" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="aZc-XN-Rex"/>
+                            <constraint firstItem="FgS-Oa-CId" firstAttribute="top" secondItem="OOe-Nr-4Ov" secondAttribute="bottom" constant="28" id="bP4-f9-MQ6"/>
                             <constraint firstItem="nqk-Vt-fNT" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="d9O-8a-skR"/>
                             <constraint firstItem="c9J-GA-pT0" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="110" id="i5I-Ub-tbx"/>
+                            <constraint firstItem="FgS-Oa-CId" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="jcu-4A-QFR"/>
                             <constraint firstItem="0q1-A2-uXc" firstAttribute="centerX" secondItem="UN5-J2-yjh" secondAttribute="centerX" id="lDH-A7-fnj"/>
                             <constraint firstItem="RxQ-Rq-LHU" firstAttribute="top" secondItem="UN5-J2-yjh" secondAttribute="bottom" constant="48" id="mbS-yb-A1F"/>
                             <constraint firstItem="UN5-J2-yjh" firstAttribute="top" secondItem="0q1-A2-uXc" secondAttribute="bottom" constant="20" id="qxK-Ny-HIl"/>
@@ -72,6 +90,7 @@
                     <connections>
                         <outlet property="hourPickerView" destination="UN5-J2-yjh" id="4pf-RD-mIY"/>
                         <outlet property="label" destination="c9J-GA-pT0" id="rtG-18-pYl"/>
+                        <outlet property="locationLabel" destination="OOe-Nr-4Ov" id="OpT-Ec-iT1"/>
                         <outlet property="minPickerView" destination="nqk-Vt-fNT" id="WKw-dx-U9N"/>
                         <outlet property="resister" destination="0q1-A2-uXc" id="TtI-aF-G80"/>
                     </connections>
