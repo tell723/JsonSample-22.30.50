@@ -15,7 +15,6 @@ class ViewController: UIViewController, UNUserNotificationCenterDelegate, CLLoca
     
     
     @IBOutlet weak var label: UILabel!
-    @IBOutlet weak var resister: UIButton!
     @IBOutlet weak var locationLabel: UILabel!
     
     var locationManager: CLLocationManager!
@@ -108,7 +107,7 @@ class ViewController: UIViewController, UNUserNotificationCenterDelegate, CLLoca
         let status = CLLocationManager.authorizationStatus()
         if status == .authorizedAlways {
             locationManager.delegate = self
-            locationManager.distanceFilter = 10
+            locationManager.distanceFilter = 100.0
             locationManager.startUpdatingLocation()
         }
     }
