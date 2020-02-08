@@ -55,44 +55,10 @@ class ViewController: UIViewController, UNUserNotificationCenterDelegate, CLLoca
         hourPickerView.dataSource = self
         minPickerView.delegate = self
         minPickerView.dataSource = self
-        
-        self.resister.isEnabled = true
+    
         self.locationLabel.text = "Location:"
     }
     
-    @IBAction func resisterButton(_ sender: Any) {
-        
-        let content = UNMutableNotificationContent()
-        content.title = self.message
-        content.body = self.location
-        content.sound = UNNotificationSound.default
-        
-        var notificationTime = DateComponents()
-        notificationTime.hour = self.hour
-        notificationTime.minute = self.min
-        
-        let tirgger: UNNotificationTrigger
-        tirgger = UNCalendarNotificationTrigger(dateMatching: notificationTime,
-                                                repeats: false)
-        
-        let request = UNNotificationRequest(identifier: "Timer",
-                                            content: content,
-                                            trigger: tirgger)
-        
-        UNUserNotificationCenter.current().add(request,
-                                               withCompletionHandler: nil)
-        
-        if let lat = self.latitude, let lon = self.longitude {
-            print("lat: \(lat) lon: \(lon)")
-        }
-        if location == "" {
-            self.locationLabel.text = "Location: 位置情報が取得できません"
-        } else {
-            self.locationLabel.text = "Location: \(location)"
-        }
-        
-        self.resister.isEnabled = false
-    }
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
@@ -129,7 +95,8 @@ class ViewController: UIViewController, UNUserNotificationCenterDelegate, CLLoca
         } else if pickerView.tag == 1 {
             self.min = minList[row]
         }
-        self.resister.isEnabled = true
+        
+        setNotification()
     }
     
     func setupLocationManager() {
@@ -148,35 +115,78 @@ class ViewController: UIViewController, UNUserNotificationCenterDelegate, CLLoca
     
     func locationManager(_ manager: CLLocationManager,
                          didUpdateLocations locations: [CLLocation]) {
+        
         let location = locations.first
-        let latitude = location?.coordinate.latitude
-        let longitude = location?.coordinate.longitude
+        self.latitude = location?.coordinate.latitude
+        self.longitude = location?.coordinate.longitude
         
         guard let lat = latitude, let lon = longitude else { return }
         print("lat: \(lat) lon: \(lon)")
+        
+        let dispatchGroup = DispatchGroup()
         let jsonString = "\(self.baseUrl)lat=\(lat)&lon=\(lon)&appid=\(self.apiKey)"
         guard let url = URL(string: jsonString) else { return }
         
-        let task: URLSessionTask = URLSession.shared.dataTask(with: url,
-                                                              completionHandler: {data, response, error in
-            guard let data = data else { return }
-            do {
-                let json = try? JSON(data: data)
-                self.weather = json!["weather"][0]["main"].stringValue
-                self.location = json!["name"].stringValue
-                print("weather: \(self.weather)")
-                print("name: \(self.location)")
-            } catch {
-                print(error)
-            }
-        })
+        dispatchGroup.enter()
+        let task: URLSessionTask =
+            URLSession.shared.dataTask(with: url,
+                                       completionHandler: {data, response, error in
+                                        guard let data = data else { return }
+                                        do {
+                                            let json = try? JSON(data: data)
+                                            self.weather = json!["weather"][0]["main"].stringValue
+                                            self.location = json!["name"].stringValue
+                                            print("weather: \(self.weather)")
+                                            print("name: \(self.location)")
+                                            dispatchGroup.leave()
+                                        } catch {
+                                            print(error)
+                                        }
+            })
         task.resume()
+        dispatchGroup.notify(queue: .main) {
+            self.setNotification()
+        }
     }
+    
+    func setNotification() {
+        
+        let content = UNMutableNotificationContent()
+        content.title = self.message
+        content.body = self.location
+        content.sound = UNNotificationSound.default
+        
+        var notificationTime = DateComponents()
+        notificationTime.hour = self.hour
+        notificationTime.minute = self.min
+        
+        let tirgger: UNNotificationTrigger
+        tirgger = UNCalendarNotificationTrigger(dateMatching: notificationTime,
+                                                repeats: false)
+        
+        let request = UNNotificationRequest(identifier: "Timer",
+                                            content: content,
+                                            trigger: tirgger)
+        
+        UNUserNotificationCenter.current().add(request,
+                                               withCompletionHandler: nil)
+        
+        if let lat = self.latitude, let lon = self.longitude {
+            print("lat: \(lat) lon: \(lon)")
+        }
+        if location == "" {
+            self.locationLabel.text = "Location: 位置情報が取得できません"
+        } else {
+            self.locationLabel.text = "Location: \(location)"
+        }
+    }
+    
+    
     
     func userNotificationCenter(_ center: UNUserNotificationCenter,
                                 willPresent notification: UNNotification,
                                 withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
            completionHandler([.alert, .badge, .sound])
-       }
+    }
 }
 
